@@ -4,6 +4,7 @@ using Plugin.GoogleAnalytics.Abstractions;
 using Plugin.GoogleAnalytics.Abstractions.Model;
 using UIKit;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Plugin.GoogleAnalytics
 {
@@ -13,8 +14,9 @@ namespace Plugin.GoogleAnalytics
 
         public DeviceInfo()
         {
-            UIWebView agentWebView = new UIWebView();
-            UserAgent = agentWebView.EvaluateJavascript("navigator.userAgent");
+            var osVersion = UIDevice.CurrentDevice.SystemVersion.Replace(".", "_");
+            var userAgent = $"Mozilla/5.0 (iPhone; CPU iPhone OS {osVersion} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148";
+            UserAgent = userAgent;
             Display = new Dimensions(Convert.ToInt32(UIScreen.MainScreen.Bounds.Size.Height), Convert.ToInt32(UIScreen.MainScreen.Bounds.Size.Width));
 
             GoogleAnalyticsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), GoogleAnalyticsFolder);
