@@ -1,6 +1,6 @@
 # Google Analytics Plugin for Xamarin and Windows
-This project is a cross platform library for Xamarin Forms, which enables a handy use of Google Analytics in your applications.  
-I've decided that there should be a broad-based library with no connection to native libraries Google in Xamarin (too long to install). 
+This project is a cross platform library for Xamarin Forms, which enables a handy use of Google Analytics in your applications.
+I've decided that there should be a broad-based library with no connection to native libraries Google in Xamarin (too long to install).
 
 Should you have any comments or suggestions, please let me know. Let's make it an easy-to-use tool for our projects.
 
@@ -8,7 +8,7 @@ Should you have any comments or suggestions, please let me know. Let's make it a
 * Google Analytics SDK for Windows and Windows Phone (https://googleanalyticssdk.codeplex.com/)
 * jamesmontemagno/Xamarin.Plugins (https://github.com/jamesmontemagno/Xamarin.Plugins)
 
-## Available at NuGet. 
+## Available at NuGet.
 https://www.nuget.org/packages/ksemenenko.GoogleAnalytics/
 
 ## Build status
@@ -42,7 +42,7 @@ GoogleAnalytics.Current.Config.AppVersion = "1.0.0.0";
 //GoogleAnalytics.Current.Config.StartMessage = "Start";
 //GoogleAnalytics.Current.Config.AppInstallerId = "someID"; // for custom installer id
 GoogleAnalytics.Current.InitTracker();
-           
+
 //Track view
 GoogleAnalytics.Current.Tracker.SendView("MainPage");
 ```
@@ -64,10 +64,20 @@ var trackerManager = new TrackerManager(new PlatformInfoProvider()
     ViewPortResolution = new Dimensions(1920, 1080)
 });
 
-tracker = trackerManager.GetTracker("UA-11111111-1"); 
+tracker = trackerManager.GetTracker("UA-11111111-1");
 tracker.AppName = "My app";
 tracker.AppVersion = "1.0.0.0";
 
 // Log something to Google Analytics
 tracker.SendView("MainPage");
 ```
+
+## Build
+
+* Right click project in Visual Studio, and click Build.
+
+## Package nuget
+
+* Prereq
+    * `brew install nuget`
+* `nuget pack GoogleAnalytics.nuspec`
